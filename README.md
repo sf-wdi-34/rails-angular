@@ -21,8 +21,6 @@ A typical Rails front end isn't a single page application, but Rails is flexible
 - Set up the beginning of an Angular front end
 - Build a rails server
 
-
-
 ## Rails Angular Setup
 
 The great thing about Angular is that it's back-end-agnostic. Since Angular was built with CRUD in mind, as long as your Angular app can query RESTful API endpoints, it doesn't matter the stack of the server. As you've already seen, you don't even need to have your own server to get your Angular app working.
@@ -31,17 +29,15 @@ If you're going to build your own server from scratch to connect to your Angular
 
 #### Base Application
 
-1. Create a new Rails application with a Postgres database:
+1. Create a new Rails application with a Postgres database and without turbo links:
 
   ```zsh
-  ➜  rails new rails_angular_sample -Td postgresql
+  ➜  rails new rails_angular_sample -Td postgresql --skip-turbolinks
   ➜  cd rails_angular_sample
   ➜  rails db:create
   ```
 
-2. Remove `turbolinks` from your Rails app (`Gemfile`, `application.js`, and `application.html.erb`(remove `'data-turbolinks-track' => true`)).
-
-3. `generate` a `SiteController` with an `index` action. You'll also need to create `site/index.html.erb` inside `app/views`. Your `site#index` will serve as the "layout" for your Angular app.
+2. `generate` a `SiteController` with an `index` action. You'll also need to create `site/index.html.erb` inside `app/views`. Your `site#index` will serve as the "layout" for your Angular app.
 
 #### Server Routes
 
