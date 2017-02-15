@@ -73,10 +73,10 @@ If you're going to build your own server from scratch to connect to your Angular
   	<%= stylesheet_link_tag :application, media: :all %>
 
     <!-- angular -->
-    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.5/angular.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.6.1/angular.min.js"></script>
 
     <!-- ngRoute -->
-    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular-route.min.js"></script>
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.1/angular-route.min.js"></script>
 
     <%= javascript_include_tag :application %>
 
@@ -93,8 +93,8 @@ If you're going to build your own server from scratch to connect to your Angular
   To download via CURL in the Terminal:
 
   ```zsh
-  ➜  curl https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.4.8/angular.min.js > vendor/assets/javascripts/angular.min.js
-  ➜  curl https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular-route.min.js > vendor/assets/javascripts/angular-route.min.js
+  ➜  curl https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.6.1/angular.min.js > vendor/assets/javascripts/angular.min.js
+  ➜  curl https://ajax.googleapis.com/ajax/libs/angularjs/1.6.1/angular-route.min.js > vendor/assets/javascripts/angular-route.min.js
   ```
 
   And require in `application.js`:
@@ -108,9 +108,40 @@ If you're going to build your own server from scratch to connect to your Angular
   //= require angular-route.min
   ```
 
+#### Adding Bootstrap
+
+We can similarly use a CDN or more Rails-y asset pipeline method for installing Bootstrap. You're familiar with the CDN method, so here's how you'd go the asset pipeline route:
+
+1. Use `curl` to download the file and place it into `vendor/assets/stylesheets/`:
+
+  ```zsh
+  ➜  curl https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css > vendor/assets/stylesheets/bootstrap.min.css
+  ```
+2. Require Bootstrap in `app/assets/stylesheets/application.css`:
+
+```css
+/*
+ *
+ *
+ *
+ *= require bootstrap
+ *= require_tree .
+ *= require_self
+ */
+```
+
 #### Configuring Your Angular App
 
 1. Create a new JavaScript file `app/assets/javascripts/app.js`. This is where you'll put all the logic for your Angular app.
+2. Because this is an asset, we need to tell our rails application to look for it. In `app/assets/javascripts/application.js`, add:
+
+```js
+/*
+ * app/assets/javascripts/application.js
+ */
+
+//= require app
+```
 
 2. Add the `ng-app` directive in the `<html>` tag in the application layout:
 
@@ -158,6 +189,7 @@ If you're going to build your own server from scratch to connect to your Angular
   # Gemfile
   #
 
+  # allows your Angular templates to reach the Rails asset pipeline
   gem 'angular-rails-templates'
   ```
 
@@ -234,8 +266,12 @@ If you're going to build your own server from scratch to connect to your Angular
    * app/assets/javascripts/app.js
    */
 
-  ...
+
+angular.module('sampleApp', ['ngRoute', 'templates'])
+  .config(config)
   .controller('HomeIndexController', HomeIndexController);
+
+  // ... skip the config function definition
 
   HomeIndexController.$inject=[];
   function HomeIndexController() {
