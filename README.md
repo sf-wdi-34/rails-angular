@@ -379,5 +379,5 @@ Now that your Angular app is all set up, it's time to CRUD a resource! You'll ne
 3. Create a new show details route.
 
 ## Additional Resources
-- [Using Bower to install front end packages](https://thinkster.io/tutorials/angular-rails/integrating-angularjs-with-the-rails-asset-pipeline)
+- [Using Bower to install front end packages (uses UI Router rather than ngRouter)](https://thinkster.io/tutorials/angular-rails/integrating-angularjs-with-the-rails-asset-pipeline)
 - [Rangular Todo Solution](https://github.com/SF-WDI-LABS/rangular-todo)
