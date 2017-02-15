@@ -1,14 +1,33 @@
 # <img src="https://cloud.githubusercontent.com/assets/7833470/10899314/63829980-8188-11e5-8cdd-4ded5bcb6e36.png" height="60"> Rangular
 
-| Objectives |
-| :--- |
-| Connect your client-side Angular application to a Rails server |
+
+### Why is this important?
+<!-- framing the "why" in big-picture/real world examples -->
+*This workshop is important because:*
+
+A typical Rails front end isn't a single page application, but Rails is flexible enough to accommodate other front ends. We will practice integrating an Angular front end to give us an idea of how we'd integrate a front end framework into our Rails project.
+
+### What are the objectives?
+<!-- specific/measurable goal for students to achieve -->
+*After this workshop, developers will be able to:*
+
+- Explain the benefits of a Rails and Angular stack
+- Connect your client-side Angular application to a Rails server
+
+### Where should we be now?
+<!-- call out the skills that are prerequisites -->
+*Before this workshop, developers should already be able to:*
+
+- Set up the beginning of an Angular front end
+- Build a rails server
+
+
+
+## Rails Angular Setup
 
 The great thing about Angular is that it's back-end-agnostic. Since Angular was built with CRUD in mind, as long as your Angular app can query RESTful API endpoints, it doesn't matter the stack of the server. As you've already seen, you don't even need to have your own server to get your Angular app working.
 
 If you're going to build your own server from scratch to connect to your Angular app, you have many options, we've already looked at Mongo/Express/Node (MEN) and now we'll look at using Ruby on Rails with Postgres.
-
-## Rails Angular Setup
 
 #### Base Application
 
@@ -17,7 +36,7 @@ If you're going to build your own server from scratch to connect to your Angular
   ```zsh
   ➜  rails new rails_angular_sample -Td postgresql
   ➜  cd rails_angular_sample
-  ➜  rake db:create
+  ➜  rails db:create
   ```
 
 2. Remove `turbolinks` from your Rails app (`Gemfile`, `application.js`, and `application.html.erb`(remove `'data-turbolinks-track' => true`)).
@@ -327,5 +346,6 @@ Now that your Angular app is all set up, it's time to CRUD a resource! You'll ne
 
 3. Create a new show details route.
 
-## Solution
-* <a href="https://github.com/SF-WDI-LABS/rangular-todo" target="_blank">Rangular Todo</a>
+## Additional Resources
+- [Using Bower to install front end packages](https://thinkster.io/tutorials/angular-rails/integrating-angularjs-with-the-rails-asset-pipeline)
+- [Rangular Todo Solution](https://github.com/SF-WDI-LABS/rangular-todo)
