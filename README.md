@@ -39,6 +39,11 @@ If you're going to build your own server from scratch to connect to your Angular
 
 2. `generate` a `SiteController` with an `index` action. You'll also need to create `site/index.html.erb` inside `app/views`. Your `site#index` will serve as the "layout" for your Angular app.
 
+<details>
+<summary>the exact command for the console</summary>
+<code>rails g controller site</code>
+</details>
+
 #### Server Routes
 
 1. Since `site#index` is the "layout" for your Angular app, you want the server to respond with this view every time a route is requested. This will allow Angular to handle routing on the client-side.
@@ -124,7 +129,7 @@ We can similarly use a CDN or more Rails-y asset pipeline method for installing 
  *
  *
  *
- *= require bootstrap
+ *= require bootstrap.min
  *= require_tree .
  *= require_self
  */
